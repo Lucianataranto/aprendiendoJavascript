@@ -1,0 +1,70 @@
+.navegacion {
+    /* background-color: coral; */
+    background-image: url("./imagenes/imagenfondo2.jpeg");
+    height: 300px;
+    width: 100%;
+    background-repeat: round;
+}
+
+.navbar__1 {
+    font-size: 50px;
+    font-family: 'Itim', cursive;
+    color: white;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.navbar__2 {
+    font-size: 30px;
+    font-family: 'Itim', cursive;
+    background-color: white;
+}
+
+.imagenesdelibros {
+    /* display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.imagenesdelibros__card {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    /* margin-bottom: 15px; */
+}
+
+.imagenlibro {
+    /* display: flex;
+    justify-content: center; */
+    width: 100%;
+    height: 500px;
+}
+
+.botoncomprar {
+position: absolute;
+bottom: 0px;
+right: 0px;
+}
+
+.titulo {
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Itim', cursive;
+}
+
+.footer {
+    background-image: url("./imagenes/imagenfondo2.jpeg");
+    font-size: 30px;
+    font-family: 'Itim', cursive;
+}
+
+/* .footer__1-2 {
+color: white;
+background-color: black;
+} */
