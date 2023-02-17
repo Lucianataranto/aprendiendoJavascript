@@ -1,19 +1,21 @@
 // no me funciona la parte de descuento
 // no me funciona la parte del while cuando no elige ni cuento ni novela ni poesia
 
+let contador = 1
 
 function comprar() {
     let compra = prompt("¿Desea comprarlo?").toLowerCase()
-    while (compra !== "si" && compra !== "no") {
+    while (compra !== "si" && compra !== "no" && contador <3) {
     alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
+    let compra = prompt("¿Desea comprarlo?").toLowerCase(
+        contador++
+    )
     } if (compra == "si") {
     banco()
     } else if (compra == "no") {
     alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
     }
     }
-
-let contador = 1
 
 function login() {
     let usuario = prompt('Ingrese su usuario').toLowerCase()
