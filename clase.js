@@ -62,23 +62,26 @@ function comprar() {
 
 function banco(stockLibros, producto) {
     let descuento = 0
-    let precioDescuento = producto.precio * descuento
-    let precioFinal = producto.precio - precioDescuento
+    let precioDescuento = 0
+    let precioFinal = 0
     let entidad = prompt("Si abona con banco Galicia, Credicoop o Santander, tiene descuento. ¿Con qué banco va a abonar?").toLowerCase()
     if (entidad == "galicia") {
         descuento = 0.25
-        producto.precio = stockLibros.find (p => p.precio == producto.precio)
-        alert('Tenes un descuento de ' + precioDescuento)
+        precioDescuento = producto.precio * descuento
+        precioFinal = producto.precio - precioDescuento
+        alert('Tenes un descuento de $' + precioDescuento)
         alert("En total, el libro sale $" + precioFinal)
     } else if (entidad == "credicoop") {
     descuento = 0.30
-    producto.precio = stockLibros.find (p => p.precio == producto.precio)
-    alert('Tenes un descuento de ' + precioDescuento)
+    precioDescuento = producto.precio * descuento
+    precioFinal = producto.precio - precioDescuento
+    alert('Tenes un descuento de $' + precioDescuento)
     alert("En total, el libro sale $" + precioFinal)
 } else if (entidad == "santander") {
     descuento = 0.15
-    producto.precio = stockLibros.find (p => p.precio == producto.precio)
-    alert('Tenes un descuento de ' + precioDescuento)
+    precioDescuento = producto.precio * descuento
+    precioFinal = producto.precio - precioDescuento
+    alert('Tenes un descuento de $' + precioDescuento)
     alert("En total, el libro sale $" + precioFinal)
 } else {
     alert('No tenemos descuento con ese banco')
