@@ -1,3 +1,17 @@
+// no me funciona la parte de descuento
+// no me funciona la parte del while cuando no elige ni cuento ni novela ni poesia
+
+
+function comprar() {
+    let compra = prompt("¿Desea comprarlo?").toLowerCase()
+    while (compra !== "si" && compra !== "no") {
+    alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
+    } if (compra == "si") {
+    banco()
+    } else if (compra == "no") {
+    alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
+    }
+    }
 
 let contador = 1
 
@@ -24,59 +38,49 @@ let stockLibros = [
     {categoria: "poesia", titulo: "Las obras completas de Alejandra Pizarnik", autor: "Alejandra Pizarnik", precio: 5250}
     ]
 
+let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
+
 function elegirLibro () {
-    let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-    while (eleccionUser !== "cuento" && eleccionUser !== "novela" && eleccionUser !== "poesia") {
-        let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
+    while (eleccionUser !== "cuento" && eleccionUser !== "novela" && eleccionUser !== "poesia" && contador <3) {
+        contador++
+        eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
     } if (eleccionUser == "cuento" || eleccionUser == "novela" || eleccionUser || "poesia") {
     let producto = stockLibros.find (p => p.categoria == eleccionUser)
-alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
+    alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
     let precioproducto = stockLibros.find (p => p.precio == eleccionUser)
     alert(producto.titulo + ' cuesta $' + producto.precio)
     comprar ()
-}
-}
+    }
+    }
 
 elegirLibro ()
 
 
-    let precio = 0
+function banco(stockLibros) {
+    let precioDescuento = precioLibro * descuento
+    let precioFinal = precioLibro - precioDescuento
     let descuento = 0
-    let resultado = Number(precio * descuento)
-
-function banco(precio) {
-let entidad = prompt("Si abona con banco Galicia, Credicoop o Santander, tiene descuento. ¿Con qué banco va a abonar?").toLowerCase()
-if (entidad == "galicia") {
-    descuento = 0.25
-    resultado = Number(precio * descuento)
-    alert("Su descuento es de $" + resultado)
-} else if (entidad == "credicoop") {
+    let entidad = prompt("Si abona con banco Galicia, Credicoop o Santander, tiene descuento. ¿Con qué banco va a abonar?").toLowerCase()
+    if (entidad == "galicia") {
+        descuento = 0.25
+    let precioLibro = stockLibros.find (eleccionUser => eleccionUser.precio == stockLibros.precio)
+        alert('Tenes un descuento de ' + precioDescuento)
+        alert("En total, el libro sale $" + precioFinal)
+    } else if (entidad == "credicoop") {
     descuento = 0.30
-    resultado = Number(precio * descuento)
-    alert("Su descuento es de $" + resultado)
+    let precioLibro = stockLibros.find (p => p.precio == precioLibro)
+    alert('Tenes un descuento de ' + precioDescuento)
+    alert("En total, el libro sale $" + precioFinal)
 } else if (entidad == "santander") {
     descuento = 0.15
-    resultado = Number(precio * descuento)
-    alert("Su descuento es de $" + resultado)
+    let precioLibro = stockLibros.find (p => p.precio == precioLibro)
+    alert('Tenes un descuento de ' + precioDescuento)
+    alert("En total, el libro sale $" + precioFinal)
 } else {
     alert('No tenemos descuento con ese banco')
 }
 }
-        function comprar() {
-            let compra = prompt("¿Desea comprar " + producto.titulo + "?").toLowerCase()
-            if (compra == "si") {
-                banco(precio)
-            } else if (compra == "no") {
-                alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-            } else {
-                let compra = prompt("¿Desea comprar " + producto.titulo + "?").toLowerCase()
-                if (compra == "si") {
-                    banco(precio)
-                } else if (compra == "no") {
-                    alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-                }
-            }
-        }
+
 
 
 
