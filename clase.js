@@ -3,20 +3,6 @@
 
 let contador = 1
 
-function comprar() {
-    let compra = prompt("¿Desea comprarlo?").toLowerCase()
-    while (compra !== "si" && compra !== "no" && contador <3) {
-    alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-    let compra = prompt("¿Desea comprarlo?").toLowerCase(
-        contador++
-    )
-    } if (compra == "si") {
-    banco()
-    } else if (compra == "no") {
-    alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-    }
-    }
-
 function login() {
     let usuario = prompt('Ingrese su usuario').toLowerCase()
     while (usuario !== 'luciana' && contador < 3) {
@@ -33,49 +19,65 @@ function login() {
 
 login()
 
-
 let stockLibros = [
     {categoria: "cuento", titulo: "Los peligros de fumar en la cama", autor: "Mariana Enríquez", precio: 3500},
     {categoria: "novela", titulo: "Días sin hambre", autor: "Delphine de Vigan", precio: 4000},
     {categoria: "poesia", titulo: "Las obras completas de Alejandra Pizarnik", autor: "Alejandra Pizarnik", precio: 5250}
     ]
 
-let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-
-function elegirLibro () {
-    while (eleccionUser !== "cuento" && eleccionUser !== "novela" && eleccionUser !== "poesia" && contador <3) {
-        contador++
-        eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-    } if (eleccionUser == "cuento" || eleccionUser == "novela" || eleccionUser || "poesia") {
+    let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
     let producto = stockLibros.find (p => p.categoria == eleccionUser)
-    alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
-    let precioproducto = stockLibros.find (p => p.precio == eleccionUser)
-    alert(producto.titulo + ' cuesta $' + producto.precio)
-    comprar ()
+    
+    function elegirLibro () {
+        while (eleccionUser !== "cuento" && eleccionUser !== "novela" && eleccionUser !== "poesia" && contador <3) {
+            alert('Por favor, elija entre "cuento", "novela" o "poesía"')
+            contador++
+            eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
+        } if (eleccionUser == "cuento" || eleccionUser == "novela" || eleccionUser || "poesia") {
+        producto = stockLibros.find (p => p.categoria == eleccionUser)
+        alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
+        alert(producto.titulo + ' cuesta $' + producto.precio)
+        comprar (stockLibros, producto)
+        return producto
+        }
+        }
+
+    
+    elegirLibro (stockLibros, producto)
+
+function comprar() {
+    let compra = prompt("¿Desea comprarlo?").toLowerCase()
+    while (compra !== "si" && compra !== "no" && contador <3) {
+    alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
+    let compra = prompt("¿Desea comprarlo?").toLowerCase(
+        contador++
+    )
+    } if (compra == "si") {
+    banco(stockLibros, producto)
+    } else if (compra == "no") {
+    alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
     }
     }
 
-elegirLibro ()
 
-
-function banco(stockLibros) {
-    let precioDescuento = precioLibro * descuento
-    let precioFinal = precioLibro - precioDescuento
+function banco(stockLibros, producto) {
     let descuento = 0
+    let precioDescuento = producto.precio * descuento
+    let precioFinal = producto.precio - precioDescuento
     let entidad = prompt("Si abona con banco Galicia, Credicoop o Santander, tiene descuento. ¿Con qué banco va a abonar?").toLowerCase()
     if (entidad == "galicia") {
         descuento = 0.25
-    let precioLibro = stockLibros.find (eleccionUser => eleccionUser.precio == stockLibros.precio)
+        producto.precio = stockLibros.find (p => p.precio == producto.precio)
         alert('Tenes un descuento de ' + precioDescuento)
         alert("En total, el libro sale $" + precioFinal)
     } else if (entidad == "credicoop") {
     descuento = 0.30
-    let precioLibro = stockLibros.find (p => p.precio == precioLibro)
+    producto.precio = stockLibros.find (p => p.precio == producto.precio)
     alert('Tenes un descuento de ' + precioDescuento)
     alert("En total, el libro sale $" + precioFinal)
 } else if (entidad == "santander") {
     descuento = 0.15
-    let precioLibro = stockLibros.find (p => p.precio == precioLibro)
+    producto.precio = stockLibros.find (p => p.precio == producto.precio)
     alert('Tenes un descuento de ' + precioDescuento)
     alert("En total, el libro sale $" + precioFinal)
 } else {
