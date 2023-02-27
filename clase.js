@@ -1,5 +1,3 @@
-// no me funciona la parte de descuento
-// no me funciona la parte del while cuando no elige ni cuento ni novela ni poesia
 
 let contador = 1
 
@@ -38,7 +36,6 @@ let stockLibros = [
         alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
         alert(producto.titulo + ' cuesta $' + producto.precio)
         comprar (stockLibros, producto)
-        return producto
         }
         }
 
@@ -85,6 +82,7 @@ function banco(stockLibros, producto) {
     alert("En total, el libro sale $" + precioFinal)
 } else {
     alert('No tenemos descuento con ese banco')
+    alert(producto.titulo + ' sin descuento cuesta $' + producto.precio)
 }
 }
 
@@ -93,106 +91,3 @@ function banco(stockLibros, producto) {
 
 
 
-
-// function libroCuento (banco) {
-//     titulo = "Los peligros de fumar en la cama"
-//     precio = 3500
-//     condicional = prompt('Entonces te recomendamos "Los peligros de fumar en la cama", de Mariana Enríquez, ¿Querés comprarlo?').toLowerCase()
-//     if (condicional == "si") {
-//         alert(titulo + ' sale ' + precio)
-//         banco(precio)
-//     } else if (condicional == "no") {
-//         alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//     } else {
-//         alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//     }
-// }
-
-// function libroPoesia (banco) {
-//     titulo = "Las obras completas de Alejandra Pizarnik"
-//     precio = 5250
-//     condicional = prompt('Entonces te recomendamos las obras completas de Alejandra Pizarnik, ¿Querés comprarlo?')
-//     if (condicional == "si") {
-//         alert(titulo + ' sale ' + precio)
-//         banco(precio)
-//     } else if (condicional == "no") {
-//         alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//     } else {
-//         alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//     }
-// }
-
-// function libroNovela (banco) {
-//     titulo = "Días sin hambre"
-//     precio = 4000
-//     condicional = prompt('Entonces te recomendamos "Días sin hambre", de Delphine de Vigan, ¿Querés comprarlo?')
-//     if (condicional == "si") {
-//         alert(titulo + ' sale ' + precio)
-//         banco(precio)
-//     } else if (condicional == "no") {
-//         alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//     } else {
-//         alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//     }
-// }
-
-// function elegirLibro (libroCuento, libroNovela, libroPoesia, banco) {
-// let tipoDeLibro = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-// switch (tipoDeLibro) {
-// case 'cuento':
-//     libroCuento (banco)
-// case 'novela':
-//     libroNovela (banco)
-// case 'poesia':
-//     libroPoesia (banco)
-// }
-// }
-
-
-
-// let tipoDeLibro = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-
-
-// switch (tipoDeLibro) {
-//     case 'cuento':
-//         titulo = "Los peligros de fumar en la cama"
-//         precio = 3500
-//         condicional = prompt('Entonces te recomendamos "Los peligros de fumar en la cama", de Mariana Enríquez, ¿Querés comprarlo?').toLowerCase()
-//         if (condicional == "si") {
-//             alert(titulo + ' sale ' + precio)
-//             banco(precio)
-//         } else if (condicional == "no") {
-//             alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//         } else {
-//             alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//         }
-//         break
-//     case 'novela':
-//         titulo = "Días sin hambre"
-//         precio = 4000
-//         condicional = prompt('Entonces te recomendamos "Días sin hambre", de Delphine de Vigan, ¿Querés comprarlo?')
-//         if (condicional == "si") {
-//             alert(titulo + ' sale ' + precio)
-//             banco(precio)
-//         } else if (condicional == "no") {
-//             alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//         } else {
-//             alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//         }
-//         break
-//     case 'poesia':
-//         titulo = "Las obras completas de Alejandra Pizarnik"
-//         precio = 5250
-//         condicional = prompt('Entonces te recomendamos las obras completas de Alejandra Pizarnik, ¿Querés comprarlo?')
-//         if (condicional == "si") {
-//             alert(titulo + ' sale ' + precio)
-//             banco(precio)
-//         } else if (condicional == "no") {
-//             alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//         } else {
-//             alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//         }
-//         break
-//     default:
-//         alert('Por favor, elegí entre Cuento, Poesía o Novela. Si no lo tenés definido, podés ver los libros de nuestro catálogo y descubrir cuál es para vos')
-// }
