@@ -40,14 +40,14 @@ let stockLibros = [
         }
 
     
-    elegirLibro (stockLibros, producto)
+    elegirLibro ()
 
 function comprar() {
     let compra = prompt("¿Desea comprarlo?").toLowerCase()
     while (compra !== "si" && compra !== "no" && contador <3) {
     alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-    let compra = prompt("¿Desea comprarlo?").toLowerCase(
-        contador++
+    contador++
+    compra = prompt("¿Desea comprarlo?").toLowerCase(
     )
     } if (compra == "si") {
     banco(stockLibros, producto)
