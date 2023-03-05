@@ -104,38 +104,38 @@ image.addEventListener("mouseover", function () {
 
 let image_1 = document.getElementById("imagen_michel")
 
-image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotomichelfaber.jpg"
+image_1.addEventListener("mouseover", function () {
+    image.src = "./imagenes/fotomichelfaber.jpg"
 })
 
 let image_2 = document.getElementById("imagen_delphine")
 
-image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotodelphinedevigan.jpg"
+image_2.addEventListener("mouseover", function () {
+    image_2.src = "./imagenes/fotodelphinedevigan.jpg"
 })
 
 let image_3 = document.getElementById("imagen_mariana")
 
-image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotomarianaenriquez.jpg"
+image_3.addEventListener("mouseover", function () {
+    image_3.src = "./imagenes/fotomarianaenriquez.jpg"
 })
 
 let image_4 = document.getElementById("imagen_vladimir")
 
-image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotovladimirnabocok.jpg"
+image_4.addEventListener("mouseover", function () {
+    image_4.src = "./imagenes/fotovladimirnabocok.jpg"
 })
 
 let image_5 = document.getElementById("imagen_scott")
 
-image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotoscottfitzgerald.jpg"
+image_5.addEventListener("mouseover", function () {
+    image_5.src = "./imagenes/fotoscottfitzgerald.jpg"
 })
 
 
 let opiniones = document.getElementById("boton_enviar")
 
-opinion.addEventListener("click", function(){
+opiniones.addEventListener("click", function(){
     
     let opinion_input = document.getElementById("opinion_input")
     
@@ -143,6 +143,13 @@ opinion.addEventListener("click", function(){
     <button class="btn_borrar">BORRAR</button>`
 
     lista.append( li );
+
+    localStorage.setItem("opinionGuardada", opinion_input)
+
+    function obtenerOpinion () {
+        let opinionObtenida = localStorage.getItem ("opinionGuardada")
+        console.log (opinionObtenida)
+    }
 
 let botones_borrar = document.querySelectorAll(".btn_borrar");
 
