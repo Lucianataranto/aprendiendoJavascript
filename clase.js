@@ -1,4 +1,3 @@
-
 let contador = 1
 
 function login() {
@@ -16,6 +15,13 @@ function login() {
 }
 
 login()
+
+//entradaPrompt para poder operar si se cancela el prompt
+
+const entradaPrompt = prompt()
+
+if(entradaPrompt != "" && entradaPrompt) {
+}
 
 let stockLibros = [
     {categoria: "cuento", titulo: "Los peligros de fumar en la cama", autor: "Mariana Enríquez", precio: 3500},
@@ -99,13 +105,21 @@ _button.addEventListener("mousedown", function() {
 let image = document.getElementById("imagen_amelie")
 
 image.addEventListener("mouseover", function () {
-    img.src = "./imagenes/fotoamelienothomb.jpg"
+    image.src = "./imagenes/fotoamelienothomb.jpg"
+})
+
+image.addEventListener("mouseout", function () {
+    image.src = "./imagenes/imagenlibro1.jpeg"  
 })
 
 let image_1 = document.getElementById("imagen_michel")
 
 image_1.addEventListener("mouseover", function () {
-    image.src = "./imagenes/fotomichelfaber.jpg"
+    image_1.src = "./imagenes/fotomichelfaber.jpg"
+})
+
+image_1.addEventListener("mouseout", function () {
+    image_1.src = "./imagenes/imagenlibro2.jpeg"  
 })
 
 let image_2 = document.getElementById("imagen_delphine")
@@ -114,16 +128,28 @@ image_2.addEventListener("mouseover", function () {
     image_2.src = "./imagenes/fotodelphinedevigan.jpg"
 })
 
+image_2.addEventListener("mouseout", function () {
+    image_2.src = "./imagenes/imagenlibro3.jpeg"  
+})
+
 let image_3 = document.getElementById("imagen_mariana")
 
 image_3.addEventListener("mouseover", function () {
     image_3.src = "./imagenes/fotomarianaenriquez.jpg"
 })
 
+image_3.addEventListener("mouseout", function () {
+    image_3.src = "./imagenes/imagenlibro5.jpeg"  
+})
+
 let image_4 = document.getElementById("imagen_vladimir")
 
 image_4.addEventListener("mouseover", function () {
-    image_4.src = "./imagenes/fotovladimirnabocok.jpg"
+    image_4.src = "./imagenes/fotovladimirnabokov.jpg"
+})
+
+image_4.addEventListener("mouseout", function () {
+    image_4.src = "./imagenes/imagenlibro6.jpeg"  
 })
 
 let image_5 = document.getElementById("imagen_scott")
@@ -132,10 +158,40 @@ image_5.addEventListener("mouseover", function () {
     image_5.src = "./imagenes/fotoscottfitzgerald.jpg"
 })
 
+image_5.addEventListener("mouseout", function () {
+    image_5.src = "./imagenes/imagenlibro4.jpeg"  
+})
 
 let opiniones = document.getElementById("boton_enviar")
 
 opiniones.addEventListener("click", function(){
+    
+    let opinion_input = document.getElementById("opinion_input")
+    
+    li.innerHTML = `<span>${opinion_input.value}</span>
+    <button class="btn_borrar">BORRAR</button>`
+
+    lista.append( li );
+
+let botones_borrar = document.querySelectorAll(".btn_borrar");
+
+console.log( botones_borrar);
+
+for( let boton of botones_borrar ){
+boton.addEventListener("click" , borrar_elemento );
+}
+
+localStorage.setItem("opinionGuardada", opinion_input)
+
+function obtenerOpinion () {
+    let opinionObtenida = localStorage.getItem ("opinionGuardada")
+    console.log (opinionObtenida)
+}
+
+})
+
+if(opiniones) {
+    opiniones.addEventListener("click", function(){
     
     let opinion_input = document.getElementById("opinion_input")
     
@@ -150,16 +206,8 @@ opiniones.addEventListener("click", function(){
         let opinionObtenida = localStorage.getItem ("opinionGuardada")
         console.log (opinionObtenida)
     }
-
-let botones_borrar = document.querySelectorAll(".btn_borrar");
-
-console.log( botones_borrar);
-
-for( let boton of botones_borrar ){
-boton.addEventListener("click" , borrar_elemento );
-}
-
 })
+}
 
 function borrar_elemento(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
