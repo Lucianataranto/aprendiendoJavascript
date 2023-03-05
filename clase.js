@@ -86,8 +86,84 @@ function banco(stockLibros, producto) {
 }
 }
 
+let _button = document.getElementById("_button")
+
+_button.addEventListener("mousedown", function() {
+    background: coral
+})
+
+// _button.addEventListener("mouseup", function() {
+//     background: 
+// })
+
+let image = document.getElementById("imagen_amelie")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotoamelienothomb.jpg"
+})
+
+let image_1 = document.getElementById("imagen_michel")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotomichelfaber.jpg"
+})
+
+let image_2 = document.getElementById("imagen_delphine")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotodelphinedevigan.jpg"
+})
+
+let image_3 = document.getElementById("imagen_mariana")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotomarianaenriquez.jpg"
+})
+
+let image_4 = document.getElementById("imagen_vladimir")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotovladimirnabocok.jpg"
+})
+
+let image_5 = document.getElementById("imagen_scott")
+
+image.addEventListener("mouseover", function () {
+    img.src = "./imagenes/fotoscottfitzgerald.jpg"
+})
 
 
+let opiniones = document.getElementById("boton_enviar")
+
+opinion.addEventListener("click", function(){
+    
+    let opinion_input = document.getElementById("opinion_input")
+    
+    li.innerHTML = `<span>${opinion_input.value}</span>
+    <button class="btn_borrar">BORRAR</button>`
+
+    lista.append( li );
+
+let botones_borrar = document.querySelectorAll(".btn_borrar");
+
+console.log( botones_borrar);
+
+for( let boton of botones_borrar ){
+boton.addEventListener("click" , borrar_elemento );
+}
+
+})
+
+function borrar_elemento(e){
+    console.log("BORRAR ESTE ELEMENTO: " , e.target);
+
+    let nodo_hijo = e.target;
+    let nodo_padre = nodo_hijo.parentNode;
+
+    console.log(nodo_padre);
+
+    nodo_padre.remove();
 
 
-
+   
+}

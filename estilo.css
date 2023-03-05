@@ -21,11 +21,6 @@
 }
 
 .imagenesdelibros {
-    /* display: grid;
-    width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,12 +31,11 @@
     display: flex;
     justify-content: center;
     width: 400px;
-    /* margin-bottom: 15px; */
+    height: 700px;
+    margin: 25px;
 }
 
 .imagenlibro {
-    /* display: flex;
-    justify-content: center; */
     width: 100%;
     height: 500px;
 }
@@ -64,7 +58,15 @@ right: 0px;
     font-family: 'Itim', cursive;
 }
 
-/* .footer__1-2 {
-color: white;
-background-color: black;
-} */
+.input {
+    margin-top: 15px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100px;
+}
+
+.texto {
+    font-size: 15px;
+}
