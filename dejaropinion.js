@@ -32,17 +32,24 @@ if(opiniones) {
     let opinion_input = document.getElementById("opinion_input")
     
     li.innerHTML = `<span>${opinion_input.value}</span>
+    <a href="./opiniones.html"> Ver mi opinión </a>
     <button class="btn_borrar">BORRAR</button>`
 
     lista.append( li );
 
     localStorage.setItem("opinionGuardada", opinion_input)
 
-    function obtenerOpinion () {
-        let opinionObtenida = localStorage.getItem ("opinionGuardada")
-        console.log (opinionObtenida)
-    }
+    // function obtenerOpinion () {
+    //     let opinionObtenida = localStorage.getItem ("opinionGuardada")
+    //     console.log (opinionObtenida)
+    // }
 })
+}
+
+for (let i = 0; i < localStorage.length; i + 1) {
+    let partida = localStorage.key(i)
+    let opinionObtenida = localStorage.getItem (partida)
+    console.log (opinionObtenida)
 }
 
 function borrar_elemento(e){
