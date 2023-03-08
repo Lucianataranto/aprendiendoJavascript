@@ -2,7 +2,7 @@
 
 let opiniones = document.getElementById("boton_enviar")
 
-opiniones.addEventListener("submit", (e) => {
+opiniones.addEventListener("click", function () {
 
     e.preventDefault
     
