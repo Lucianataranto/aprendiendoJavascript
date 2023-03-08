@@ -3,6 +3,10 @@ let opiniones = document.getElementById("boton_enviar")
 opiniones.addEventListener("click", function(){
     
     let opinion_input = document.getElementById("opinion_input")
+
+    console.log (opinion_input)
+
+    let li = document.createElement("li")
     
     li.innerHTML = `<span>${opinion_input.value}</span>
     <button class="btn_borrar">BORRAR</button>`
