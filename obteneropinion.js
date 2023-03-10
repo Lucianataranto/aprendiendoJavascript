@@ -180,3 +180,4 @@ function borrar_elemento(e){
     nodo_padre.remove(); 
 }
 
+Storage.clear(opinionObtenida1)
