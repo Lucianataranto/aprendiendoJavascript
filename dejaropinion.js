@@ -10,10 +10,10 @@ opiniones.addEventListener("submit", (e) => {
 
     console.log (opinion_input)
 
+    localStorage.setItem ("opinionGuardada", JSON.stringify(opinion_input))
+
 })
 
-let opinionGuardada = localStorage.setItem ("opinionGuardada", JSON.stringify(opiniones))
-    console.log (opinionGuardada)
 
 // OPINION PARA FORM 2
 
@@ -27,10 +27,10 @@ opiniones1.addEventListener("submit", (e) => {
 
     console.log (opinion_input1)
 
+    localStorage.setItem ("opinionGuardada1", JSON.stringify(opinion_input1))
+
 })
 
-let opinionGuardada1 = localStorage.setItem ("opinionGuardada1", JSON.stringify(opiniones1))
-    console.log (opinionGuardada1)
 
 // OPINION PARA FORM 3
 
@@ -44,10 +44,10 @@ opiniones2.addEventListener("submit", (e) => {
 
     console.log (opinion_input2)
 
+    localStorage.setItem ("opinionGuardada2", JSON.stringify(opinion_input2))
+ 
 })
 
-let opinionGuardada2 = localStorage.setItem ("opinionGuardada2", JSON.stringify(opiniones2))
-    console.log (opinionGuardada2)
 
 // OPINION PARA FORM 4
 
@@ -61,10 +61,9 @@ opiniones3.addEventListener("submit", (e) => {
 
     console.log (opinion_input3)
 
-})
+    localStorage.setItem ("opinionGuardada3", JSON.stringify(opinion_input3))
 
-let opinionGuardada3 = localStorage.setItem ("opinionGuardada3", JSON.stringify(opiniones3))
-    console.log (opinionGuardada3)
+})
 
 // OPINION PARA FORM 5
 
@@ -78,10 +77,10 @@ opiniones4.addEventListener("submit", (e) => {
 
     console.log (opinion_input4)
 
+    localStorage.setItem ("opinionGuardada4", JSON.stringify(opinion_input4))
+
 })
 
-let opinionGuardada4 = localStorage.setItem ("opinionGuardada4", JSON.stringify(opiniones4))
-    console.log (opinionGuardada4)
 
 // OPINION PARA FORM 6
 
@@ -95,7 +94,6 @@ opiniones5.addEventListener("submit", (e) => {
 
     console.log (opinion_input5)
 
-})
+    localStorage.setItem ("opinionGuardada5", JSON.stringify(opinion_input5))
 
-let opinionGuardada5 = localStorage.setItem ("opinionGuardada5", JSON.stringify(opiniones5))
-    console.log (opinionGuardada5)
+})
