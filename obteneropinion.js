@@ -161,7 +161,7 @@ let li5 = document.createElement("li")
     
     li5.innerHTML = `<span>${opinionObtenida5}</span>
     <button class="btn_borrar">BORRAR</button>`
-    lista1.append( li5 );
+    lista5.append( li5 );
 
 let botones_borrar5 = document.querySelectorAll(".btn_borrar");
 
@@ -180,4 +180,3 @@ function borrar_elemento(e){
     nodo_padre.remove(); 
 }
 
-Storage.clear(opinionObtenida1)
