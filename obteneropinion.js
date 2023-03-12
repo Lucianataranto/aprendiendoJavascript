@@ -15,20 +15,23 @@ let li = document.createElement("li")
 let botones_borrar = document.querySelectorAll(".btn_borrar");
 
 for( let boton of botones_borrar ){
-    boton.addEventListener("click" , borrar_elemento );
+    boton.addEventListener("click" , function (e) {
+    
+        console.log("BORRAR ESTE ELEMENTO: " , e.target);
+
+        let nodo_hijo = e.target;
+        let nodo_padre = nodo_hijo.parentNode;
+    
+        console.log(nodo_padre);
+    
+        nodo_padre.remove(); 
+
+        localStorage.removeItem("opinionGuardada")
+
+    })
 }
 
-function borrar_elemento(e){
-    console.log("BORRAR ESTE ELEMENTO: " , e.target);
-
-    let nodo_hijo = e.target;
-    let nodo_padre = nodo_hijo.parentNode;
-
-    console.log(nodo_padre);
-
-    nodo_padre.remove(); 
-}
-
+// OPINION OBTENIDA FORM 2
 
 let opinionObtenida1 = JSON.parse(localStorage.getItem ("opinionGuardada1"))
     console.log (opinionObtenida1)
@@ -56,6 +59,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    localStorage.removeItem("opinionGuardada")
 }
 
 
@@ -87,6 +92,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    localStorage.removeItem("opinionGuardada")
 }
 
 
@@ -118,6 +125,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    localStorage.removeItem("opinionGuardada")
 }
 
 // OPINION OBTENIDA FORM 5
@@ -148,6 +157,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    localStorage.removeItem("opinionGuardada")
 }
 
 // OPINION OBTENIDA FORM 6
@@ -178,5 +189,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    localStorage.removeItem("opinionGuardada")
+
 }
 

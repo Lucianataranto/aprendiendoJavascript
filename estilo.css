@@ -70,3 +70,8 @@ right: 0px;
 .texto {
     font-size: 15px;
 }
+
+.carrito_de_compras {
+    display: flex;
+    justify-content: center;
+}
