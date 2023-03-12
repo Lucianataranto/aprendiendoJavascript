@@ -1,99 +1,29 @@
-// OPINION PARA FORM 1
-
-let opiniones = document.getElementById("boton_enviar")
-
-opiniones.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-    
-    let opinion_input = document.getElementById("opinion_input").value
-
-    console.log (opinion_input)
-
-    localStorage.setItem ("opinionGuardada", JSON.stringify(opinion_input))
-
-})
-
-
-// OPINION PARA FORM 2
-
-let opiniones1 = document.getElementById("boton_enviar-1")
-
-opiniones1.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-
-    let opinion_input1 = document.getElementById("opinion_input-1").value
-
-    console.log (opinion_input1)
-
-    localStorage.setItem ("opinionGuardada1", JSON.stringify(opinion_input1))
-
-})
-
-
-// OPINION PARA FORM 3
-
-let opiniones2 = document.getElementById("boton_enviar-2")
-
-opiniones2.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-
-    let opinion_input2 = document.getElementById("opinion_input-2").value
-
-    console.log (opinion_input2)
-
-    localStorage.setItem ("opinionGuardada2", JSON.stringify(opinion_input2))
- 
-})
-
-
-// OPINION PARA FORM 4
-
-let opiniones3 = document.getElementById("boton_enviar-3")
-
-opiniones3.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-
-    let opinion_input3 = document.getElementById("opinion_input-3").value
-
-    console.log (opinion_input3)
-
-    localStorage.setItem ("opinionGuardada3", JSON.stringify(opinion_input3))
-
-})
-
-// OPINION PARA FORM 5
-
-let opiniones4 = document.getElementById("boton_enviar-4")
-
-opiniones4.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-
-    let opinion_input4 = document.getElementById("opinion_input-4").value
-
-    console.log (opinion_input4)
-
-    localStorage.setItem ("opinionGuardada4", JSON.stringify(opinion_input4))
-
-})
-
-
-// OPINION PARA FORM 6
-
-let opiniones5 = document.getElementById("boton_enviar-5")
-
-opiniones5.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-    
-    let opinion_input5 = document.getElementById("opinion_input-5").value
-
-    console.log (opinion_input5)
-
-    localStorage.setItem ("opinionGuardada5", JSON.stringify(opinion_input5))
-
-})
+// Función para manejar los eventos de envío de formulario
+function enviarOpinion(e, formId, inputId) {
+    e.preventDefault();
+  
+    let opinionInput = document.getElementById(inputId);
+    let opinion = opinionInput.value;
+  
+    // Agregar la opinión al almacenamiento local
+    let opiniones = JSON.parse(localStorage.getItem("opiniones")) || [];
+    opiniones.push(opinion);
+    localStorage.setItem(`opinionGuardada${formId}`, JSON.stringify(opinion));
+  
+    // Agregar la opinión a la lista correspondiente
+    mostrarOpinion(opinion, `opinionGuardada${formId}`);
+  
+    // Limpiar el campo de entrada de opinión
+    opinionInput.value = "";
+  }
+  
+  // Configuración de eventos de envío de formulario
+  for (let i = 1; i <= 5; i++) {
+    let botonEnviar = document.getElementById(`boton_enviar-${i}`);
+    if (botonEnviar) {
+      botonEnviar.addEventListener("submit", (e) => {
+        enviarOpinion(e, i, `opinion_input-${i}`);
+      });
+    }
+  }
+  
