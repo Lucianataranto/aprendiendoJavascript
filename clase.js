@@ -103,207 +103,159 @@ function comprar (e) {
 
     localStorage.setItem("carrito" , arreglo_guardado);
 
-    mostrar_carrito();
+    renderizarProductos();
+    renderizarCarrito();
+
 }
 
 
-let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito"))
+let carritoAlmacenado = JSON.parse(localStorage.getItem ("carritoAlmacenado"))
     console.log (carritoAlmacenado)
 
 
-    function mostrar_carrito(){
+    let carrito = [];
+const divisa = '€';
+const DOMitems = document.querySelector('#items');
+const DOMcarrito = document.querySelector('#carrito');
+const DOMtotal = document.querySelector('#total');
+const DOMbotonVaciar = document.querySelector('#boton-vaciar');
 
-        let tabla = document.getElementById("tbody");
-    
-        tabla.innerHTML = "";
-    
-        for( let producto of carritoAlmacenado){
-    
-            let fila= document.createElement("tr");
-    
-            fila.innerHTML = `<td><img src="${producto.imagen}" height="200px" width="110px"></td>
-                              <td><p>${producto.nombre}</p></td>
-                              <td>${producto.cantidad}</td>
-                              <td>${producto.precio}</td>
-                              <td><button class="btn btn-danger borrar_elemento">Borrar</button></td>
-                              `
-            tabla.append(fila);
-    
-        }
-    
-    
-        let btn_borrar = document.querySelectorAll(".borrar_elemento");
-    
-        //console.log(btn_borrar);
-    
-        for( let boton of btn_borrar){
-    
-            boton.addEventListener("click" , borrar_producto);
-        }
-       
-    }
-    
-    
-    function borrar_producto(e){
-    
-        console.log("BORRAR ESTO: " ,e.target);
-        
-        let abuelo = e.target.parentNode.parentNode;
-    
-        let producto_eliminar = abuelo.querySelector("p").textContent;
-    
-       
-    
-        function eliminar_producto( producto){
-    
-            return producto.nombre != producto_eliminar
-        }
-    
-    
-        let resultado_filter = carritoAlmacenado.filter( eliminar_producto );
-    
-        carritoAlmacenado = resultado_filter;
-    
-    
-        mostrar_carrito();
-     
-        console.log( resultado_filter);
-    
-    
-        abuelo.remove();
-    }
-    
-    
-    
-    let btn_compra = document.querySelectorAll(".botonCompra");
-    
-    console.log( btn_compra );
-    
-    
-    for( let boton of btn_compra ){
-    
-        boton.addEventListener("click" , agregar_a_carrito);
-    }
-    
-    
-    
-    
-    let btn_carrito = document.getElementById("mostrar_carrito");
-    
-    btn_carrito.addEventListener("click" , function(){
-    
-    
-        let carrito = document.getElementById("carrito");
-    
-    
-        if( carrito.style.display == "none"){
-    
-            carrito.style.display = "block";
-        }
-        else{
-            carrito.style.display = "none";
-        }
-    })
+// Funciones
 
+/**
+ * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+ */
+function renderizarProductos() {
+    carritoAlmacenado.forEach((e) => {
+        // Estructura
+        const miNodo = document.createElement('div');
+        miNodo.classList.add('card', 'col-sm-4');
+        // Body
+        const miNodoCardBody = document.createElement('div');
+        miNodoCardBody.classList.add('card-body');
+        // Titulo
+        const miNodoTitle = document.createElement('h5');
+        miNodoTitle.classList.add('card-title');
+        miNodoTitle.textContent = e.nombre;
+        // Imagen
+        const miNodoImagen = document.createElement('img');
+        miNodoImagen.classList.add('img-fluid');
+        miNodoImagen.setAttribute('src', e.imagen);
+        // Precio
+        const miNodoPrecio = document.createElement('p');
+        miNodoPrecio.classList.add('card-text');
+        miNodoPrecio.textContent = `${e.precio}${divisa}`;
+        // Boton 
+        const miNodoBoton = document.createElement('button');
+        miNodoBoton.classList.add('btn', 'btn-primary');
+        miNodoBoton.textContent = '+';
+        miNodoBoton.setAttribute('marcador', e.cantidad);
+        miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+        // Insertamos
+        miNodoCardBody.appendChild(miNodoImagen);
+        miNodoCardBody.appendChild(miNodoTitle);
+        miNodoCardBody.appendChild(miNodoPrecio);
+        miNodoCardBody.appendChild(miNodoBoton);
+        miNodo.appendChild(miNodoCardBody);
+        DOMitems.appendChild(miNodo);
+    });
+}
 
+/**
+ * Evento para añadir un producto al carrito de la compra
+ */
+function anyadirProductoAlCarrito(evento) {
+    // Anyadimos el Nodo a nuestro carrito
+    carrito.push(evento.target.getAttribute('marcador'))
+    // Actualizamos el carrito 
+    renderizarCarrito();
 
-// //FUNCIÓN DE COMPRA
-// function comprar_carrito () {
-//     let producto = stockLibros.find (p => p.titulo == nombre_producto)
-// if  (producto) {
-// boton_comprar.push(arregloCarrito)
-// }}
+}
 
-// comprar_carrito()
+/**
+ * Dibuja todos los productos guardados en el carrito
+ */
+function renderizarCarrito() {
+    // Vaciamos todo el html
+    DOMcarrito.textContent = '';
+    // Quitamos los duplicados
+    const carritoSinDuplicados = [...new Set(carrito)];
+    // Generamos los Nodos a partir de carrito
+    carritoSinDuplicados.forEach((item) => {
+        // Obtenemos el item que necesitamos de la variable base de datos
+        const miItem = carritoAlmacenado.filter((itemBaseDatos) => {
+            // ¿Coincide las id? Solo puede existir un caso
+            return itemBaseDatos.id === parseInt(item);
+        });
+        // Cuenta el número de veces que se repite el producto
+        const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+            // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+            return itemId === item ? total += 1 : total;
+        }, 0);
+        // Creamos el nodo del item del carrito
+        const miNodo = document.createElement('li');
+        miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+        // Boton de borrar
+        const miBoton = document.createElement('button');
+        miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+        miBoton.textContent = 'X';
+        miBoton.style.marginLeft = '1rem';
+        miBoton.dataset.item = item;
+        miBoton.addEventListener('click', borrarItemCarrito);
+        // Mezclamos nodos
+        miNodo.appendChild(miBoton);
+        DOMcarrito.appendChild(miNodo);
+    });
+    // Renderizamos el precio total en el HTML
+    DOMtotal.textContent = calcularTotal();
+}
 
-// MOSTRAR EL CARRITO DE COMPRAS
+/**
+ * Evento para borrar un elemento del carrito
+ */
+function borrarItemCarrito(evento) {
+    // Obtenemos el producto ID que hay en el boton pulsado
+    const id = evento.target.dataset.item;
+    // Borramos todos los productos
+    carrito = carrito.filter((carritoId) => {
+        return carritoId !== id;
+    });
+    // volvemos a renderizar
+    renderizarCarrito();
+}
 
+/**
+ * Calcula el precio total teniendo en cuenta los productos repetidos
+ */
+function calcularTotal() {
+    // Recorremos el array del carrito 
+    return carrito.reduce((total, item) => {
+        // De cada elemento obtenemos su precio
+        const miItem = baseDeDatos.filter((itemBaseDatos) => {
+            return itemBaseDatos.id === parseInt(item);
+        });
+        // Los sumamos al total
+        return total + miItem[0].precio;
+    }, 0).toFixed(2);
+}
 
-// PROMPT
+/**
+ * Varia el carrito y vuelve a dibujarlo
+ */
+function vaciarCarrito() {
+    // Limpiamos los productos guardados
+    carrito = [];
+    // Renderizamos los cambios
 
-// let contador = 1
+    localStorage.removeItem("carritoAlmacenado")
 
-// function login() {
-//     let usuario = prompt('Ingrese su usuario').toLowerCase()
-//     while (usuario !== 'luciana' && contador < 3) {
-//         alert('Usuario incorrecto')
-//         contador++
-//         usuario = prompt('Ingrese su usuario nuevamente')
-//     }
-//     if (contador === 3) {
-//         alert('Por su seguridad, su usuario ha sido bloqueado temporalmente. Vuela a intentarlo más tarde.')
-//     } else {
-//         alert('Bienvenidx ' + usuario)
-//     }
-// }
+    renderizarCarrito();
+}
 
-// login()
+// Eventos
+DOMbotonVaciar.addEventListener('click', vaciarCarrito);
 
-// let stockLibros = [
-//     {categoria: "cuento", titulo: "Los peligros de fumar en la cama", autor: "Mariana Enríquez", precio: 3500},
-//     {categoria: "novela", titulo: "Días sin hambre", autor: "Delphine de Vigan", precio: 4000},
-//     {categoria: "poesia", titulo: "Las obras completas de Alejandra Pizarnik", autor: "Alejandra Pizarnik", precio: 5250}
-//     ]
-
-//     let eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-//     let producto = stockLibros.find (p => p.categoria == eleccionUser)
-    
-//     function elegirLibro () {
-//         while (eleccionUser !== "cuento" && eleccionUser !== "novela" && eleccionUser !== "poesia" && contador <3) {
-//             alert('Por favor, elija entre "cuento", "novela" o "poesía"')
-//             contador++
-//             eleccionUser = prompt('¿Usted busca leer novela, cuento o poesía?').toLowerCase()
-//         } if (eleccionUser == "cuento" || eleccionUser == "novela" || eleccionUser || "poesia") {
-//         producto = stockLibros.find (p => p.categoria == eleccionUser)
-//         alert('Entonces te recomendamos ' + producto.titulo + ' de ' + producto.autor)
-//         alert(producto.titulo + ' cuesta $' + producto.precio)
-//         comprar (stockLibros, producto)
-//         }
-//         }
-
-    
-//     elegirLibro ()
-
-// function comprar() {
-//     let compra = prompt("¿Desea comprarlo?").toLowerCase()
-//     while (compra !== "si" && compra !== "no" && contador <3) {
-//     alert("Por favor escribí 'si' o 'no' para que podamos procesar tu respuesta")
-//     contador++
-//     compra = prompt("¿Desea comprarlo?").toLowerCase(
-//     )
-//     } if (compra == "si") {
-//     banco(stockLibros, producto)
-//     } else if (compra == "no") {
-//     alert("También podés ver los libros de nuestro catálogo y descubrir cuál es para vos")
-//     }
-//     }
-
-
-// function banco(stockLibros, producto) {
-//     let descuento = 0
-//     let precioDescuento = 0
-//     let precioFinal = 0
-//     let entidad = prompt("Si abona con banco Galicia, Credicoop o Santander, tiene descuento. ¿Con qué banco va a abonar?").toLowerCase()
-//     if (entidad == "galicia") {
-//         descuento = 0.25
-//         precioDescuento = producto.precio * descuento
-//         precioFinal = producto.precio - precioDescuento
-//         alert('Tenes un descuento de $' + precioDescuento)
-//         alert("En total, el libro sale $" + precioFinal)
-//     } else if (entidad == "credicoop") {
-//     descuento = 0.30
-//     precioDescuento = producto.precio * descuento
-//     precioFinal = producto.precio - precioDescuento
-//     alert('Tenes un descuento de $' + precioDescuento)
-//     alert("En total, el libro sale $" + precioFinal)
-// } else if (entidad == "santander") {
-//     descuento = 0.15
-//     precioDescuento = producto.precio * descuento
-//     precioFinal = producto.precio - precioDescuento
-//     alert('Tenes un descuento de $' + precioDescuento)
-//     alert("En total, el libro sale $" + precioFinal)
-// } else {
-//     alert('No tenemos descuento con ese banco')
-//     alert(producto.titulo + ' sin descuento cuesta $' + producto.precio)
-// }
-// }
+// Inicio
+renderizarProductos();
+renderizarCarrito();
