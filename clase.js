@@ -109,7 +109,7 @@ function comprar (e) {
 }
 
 
-let carritoAlmacenado = JSON.parse(localStorage.getItem ("carritoAlmacenado"))
+let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito")) || []
     console.log (carritoAlmacenado)
 
 
@@ -158,7 +158,7 @@ function renderizarProductos() {
         miNodoCardBody.appendChild(miNodoBoton);
         miNodo.appendChild(miNodoCardBody);
         DOMitems.appendChild(miNodo);
-    });
+    })
 }
 
 /**
