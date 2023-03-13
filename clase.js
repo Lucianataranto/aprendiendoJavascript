@@ -113,7 +113,7 @@ let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito")) || []
     console.log (carritoAlmacenado)
 
 
-    let carrito = [];
+    // carrito = [];
 const divisa = '€';
 const DOMitems = document.querySelector('#items');
 const DOMcarrito = document.querySelector('#carrito');
@@ -166,7 +166,7 @@ function renderizarProductos() {
  */
 function anyadirProductoAlCarrito(evento) {
     // Anyadimos el Nodo a nuestro carrito
-    carrito.push(evento.target.getAttribute('marcador'))
+    carritoAlmacenado.push(evento.target.getAttribute('marcador'))
     // Actualizamos el carrito 
     renderizarCarrito();
 
@@ -179,7 +179,7 @@ function renderizarCarrito() {
     // Vaciamos todo el html
     DOMcarrito.textContent = '';
     // Quitamos los duplicados
-    const carritoSinDuplicados = [...new Set(carrito)];
+    const carritoSinDuplicados = [...new Set(carritoAlmacenado)];
     // Generamos los Nodos a partir de carrito
     carritoSinDuplicados.forEach((item) => {
         // Obtenemos el item que necesitamos de la variable base de datos
@@ -188,7 +188,7 @@ function renderizarCarrito() {
             return itemBaseDatos.id === parseInt(item);
         });
         // Cuenta el número de veces que se repite el producto
-        const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+        const numeroUnidadesItem = carritoAlmacenado.reduce((total, itemId) => {
             // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
             return itemId === item ? total += 1 : total;
         }, 0);
@@ -218,7 +218,7 @@ function borrarItemCarrito(evento) {
     // Obtenemos el producto ID que hay en el boton pulsado
     const id = evento.target.dataset.item;
     // Borramos todos los productos
-    carrito = carrito.filter((carritoId) => {
+    carrito = carritoAlmacenado.filter((carritoId) => {
         return carritoId !== id;
     });
     // volvemos a renderizar
@@ -230,9 +230,9 @@ function borrarItemCarrito(evento) {
  */
 function calcularTotal() {
     // Recorremos el array del carrito 
-    return carrito.reduce((total, item) => {
+    return carritoAlmacenado.reduce((total, item) => {
         // De cada elemento obtenemos su precio
-        const miItem = baseDeDatos.filter((itemBaseDatos) => {
+        const miItem = carritoAlmacenado.filter((itemBaseDatos) => {
             return itemBaseDatos.id === parseInt(item);
         });
         // Los sumamos al total
@@ -245,7 +245,7 @@ function calcularTotal() {
  */
 function vaciarCarrito() {
     // Limpiamos los productos guardados
-    carrito = [];
+    carritoAlmacenado = [];
     // Renderizamos los cambios
 
     localStorage.removeItem("carritoAlmacenado")
