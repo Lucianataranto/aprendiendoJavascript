@@ -148,8 +148,8 @@ function renderizarProductos() {
         miNodo.appendChild(miNodoCardBody);
         DOMitems.appendChild(miNodo);
     });
+}
 
-    
 let botonVaciar = document.getElementById("boton-vaciar")
 
 botonVaciar.addEventListener("click" , vaciarCarrito)
@@ -162,8 +162,6 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
 
         comprar (e)
     }
-}
-
 
 
 
