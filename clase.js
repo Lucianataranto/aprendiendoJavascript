@@ -156,9 +156,11 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
     
     function vaciarCarrito() {
 
-        // Limpiamos los productos guardados
-        // Renderizamos los cambios
+        carritoDeCompras = [];
+
         localStorage.removeItem("carrito")
+
+        comprar (e)
     }
 }
 
