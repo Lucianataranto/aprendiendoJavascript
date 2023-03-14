@@ -64,7 +64,8 @@ image_5.addEventListener("mouseout", function () {
 
 // EVENTO PARA CARRITO DE COMPRAS
 
-let carritoDeCompras = [];
+let carritoDeCompras = JSON.parse(localStorage.getItem ("carrito")) || []
+console.log (carritoDeCompras)
 
 let boton_comprar = document.querySelectorAll(".botoncomprar")
 
@@ -115,12 +116,13 @@ const DOMtotal = document.querySelector('#total');
 const DOMbotonVaciar = document.querySelector('#boton-vaciar');
 
 function renderizarProductos() {
+        
+        DOMitems.innerHTML = "";
 
+        // let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito")) || []
+        // console.log (carritoAlmacenado)
 
-        let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito")) || []
-        console.log (carritoAlmacenado)
-
-    carritoAlmacenado.forEach((info) => {
+        carritoDeCompras.forEach((info) => {
         // Estructura
         const miNodo = document.createElement('div');
         miNodo.classList.add('card', 'col-sm-4');
@@ -145,8 +147,6 @@ function renderizarProductos() {
         miNodoCardBody.appendChild(miNodoPrecio);
         miNodo.appendChild(miNodoCardBody);
         DOMitems.appendChild(miNodo);
-
-        return (carritoAlmacenado, miNodo)
     });
 
     
