@@ -1,6 +1,6 @@
 // OPINION OBTENIDA FORM 1
 
-let opinionObtenida = (localStorage.getItem ("opinionGuardada"))
+let opinionObtenida = JSON.parse(localStorage.getItem ("opinionGuardada")) || []
     console.log (opinionObtenida)
 
 let lista = document.getElementById("lista")
@@ -25,6 +25,8 @@ for( let boton of botones_borrar ){
     
         nodo_padre.remove(); 
 
+        opinionObtenida = [];
+
         localStorage.removeItem("opinionGuardada")
 
     })
@@ -32,7 +34,7 @@ for( let boton of botones_borrar ){
 
 // OPINION OBTENIDA FORM 2
 
-let opinionObtenida1 = (localStorage.getItem ("opinionGuardada1"))
+let opinionObtenida1 = JSON.parse(localStorage.getItem ("opinionGuardada1")) || []
     console.log (opinionObtenida1)
 
 let lista1 = document.getElementById("lista-1")
@@ -65,7 +67,7 @@ function borrar_elemento(e){
 
 // OPINION OBTENIDA FORM 3
 
-let opinionObtenida2 = (localStorage.getItem ("opinionGuardada2"))
+let opinionObtenida2 = JSON.parse(localStorage.getItem ("opinionGuardada2")) || []
     console.log (opinionObtenida2)
 
 let lista2 = document.getElementById("lista-2")
@@ -98,7 +100,7 @@ function borrar_elemento(e){
 
 // OPINION OBTENIDA FORM 4
 
-let opinionObtenida3 = (localStorage.getItem ("opinionGuardada3"))
+let opinionObtenida3 = JSON.parse(localStorage.getItem ("opinionGuardada3")) || []
     console.log (opinionObtenida3)
 
 let lista3 = document.getElementById("lista-3")
@@ -130,7 +132,7 @@ function borrar_elemento(e){
 
 // OPINION OBTENIDA FORM 5
 
-let opinionObtenida4 = (localStorage.getItem ("opinionGuardada4"))
+let opinionObtenida4 = JSON.parse(localStorage.getItem ("opinionGuardada4")) || []
     console.log (opinionObtenida4)
 
 let lista4 = document.getElementById("lista-4")
@@ -162,7 +164,7 @@ function borrar_elemento(e){
 
 // OPINION OBTENIDA FORM 6
 
-let opinionObtenida5 = (localStorage.getItem ("opinionGuardada5"))
+let opinionObtenida5 = JSON.parse(localStorage.getItem ("opinionGuardada5")) || []
     console.log (opinionObtenida5)
 
 let lista5 = document.getElementById("lista-5")
