@@ -11,10 +11,11 @@ let li = document.createElement("li")
     <button class="btn_borrar">BORRAR</button>`
     lista.append( li );
 
-let botones_borrar = document.querySelectorAll(".btn_borrar");
+let boton_borrar = document.querySelector(".btn_borrar");
 
-for( let boton of botones_borrar ){
-    boton.addEventListener("click" , function (e) {
+    boton_borrar.addEventListener("click" , borrar_elemento) 
+    
+        function borrar_elemento (e) {
     
         console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
@@ -23,14 +24,13 @@ for( let boton of botones_borrar ){
     
         console.log(nodo_padre);
     
-        nodo_padre.remove(); 
+        nodo_padre.remove();
 
         opinionObtenida = [];
 
         localStorage.removeItem("opinionGuardada")
 
-    })
-}
+    }
 
 // OPINION OBTENIDA FORM 2
 
@@ -42,16 +42,14 @@ let lista1 = document.getElementById("lista-1")
 let li1 = document.createElement("li")
     
     li1.innerHTML = `<span>${opinionObtenida1}</span>
-    <button class="btn_borrar">BORRAR</button>`
+    <button class="btn_borrar1">BORRAR</button>`
     lista1.append( li1 );
 
-let botones_borrar1 = document.querySelectorAll(".btn_borrar");
+let boton_borrar1 = document.querySelector(".btn_borrar1");
 
-for( let boton of botones_borrar1 ){
-    boton.addEventListener("click" , borrar_elemento );
-}
+boton_borrar1.addEventListener("click" , borrar_elemento1 );
 
-function borrar_elemento(e){
+function borrar_elemento1(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
     let nodo_hijo = e.target;
@@ -60,6 +58,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    opinionObtenida1 = [];
 
     localStorage.removeItem("opinionGuardada1")
 }
@@ -75,16 +75,15 @@ let lista2 = document.getElementById("lista-2")
 let li2 = document.createElement("li")
     
     li2.innerHTML = `<span>${opinionObtenida2}</span>
-    <button class="btn_borrar">BORRAR</button>`
+    <button class="btn_borrar2">BORRAR</button>`
     lista2.append( li2 );
 
-let botones_borrar2 = document.querySelectorAll(".btn_borrar");
+let boton_borrar2 = document.querySelector(".btn_borrar2");
 
-for( let boton of botones_borrar2 ){
-    boton.addEventListener("click" , borrar_elemento );
-}
+boton_borrar2.addEventListener("click" , borrar_elemento2 );
 
-function borrar_elemento(e){
+
+function borrar_elemento2(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
     let nodo_hijo = e.target;
@@ -93,6 +92,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    opinionObtenida2 = [];
 
     localStorage.removeItem("opinionGuardada2")
 }
@@ -108,16 +109,15 @@ let lista3 = document.getElementById("lista-3")
 let li3 = document.createElement("li")
     
     li3.innerHTML = `<span>${opinionObtenida3}</span>
-    <button class="btn_borrar">BORRAR</button>`
+    <button class="btn_borrar3">BORRAR</button>`
     lista3.append( li3 );
 
-let botones_borrar3 = document.querySelectorAll(".btn_borrar");
+let boton_borrar3 = document.querySelector(".btn_borrar3");
 
-for( let boton of botones_borrar3 ){
-    boton.addEventListener("click" , borrar_elemento );
-}
+boton_borrar3.addEventListener("click" , borrar_elemento3 );
 
-function borrar_elemento(e){
+
+function borrar_elemento3(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
     let nodo_hijo = e.target;
@@ -126,6 +126,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    opinionObtenida3 = [];
 
     localStorage.removeItem("opinionGuardada3")
 }
@@ -140,16 +142,15 @@ let lista4 = document.getElementById("lista-4")
 let li4 = document.createElement("li")
     
     li4.innerHTML = `<span>${opinionObtenida4}</span>
-    <button class="btn_borrar">BORRAR</button>`
+    <button class="btn_borrar4">BORRAR</button>`
     lista4.append( li4 );
 
-let botones_borrar4 = document.querySelectorAll(".btn_borrar");
+let boton_borrar4 = document.querySelector(".btn_borrar4");
 
-for( let boton of botones_borrar4 ){
-    boton.addEventListener("click" , borrar_elemento );
-}
+boton_borrar4.addEventListener("click" , borrar_elemento4 );
 
-function borrar_elemento(e){
+
+function borrar_elemento4(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
     let nodo_hijo = e.target;
@@ -158,6 +159,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    opinionObtenida4 = [];
 
     localStorage.removeItem("opinionGuardada4")
 }
@@ -172,16 +175,15 @@ let lista5 = document.getElementById("lista-5")
 let li5 = document.createElement("li")
     
     li5.innerHTML = `<span>${opinionObtenida5}</span>
-    <button class="btn_borrar">BORRAR</button>`
+    <button class="btn_borrar5">BORRAR</button>`
     lista5.append( li5 );
 
-let botones_borrar5 = document.querySelectorAll(".btn_borrar");
+let boton_borrar5 = document.querySelector(".btn_borrar5");
 
-for( let boton of botones_borrar5 ){
-    boton.addEventListener("click" , borrar_elemento );
-}
+boton_borrar5.addEventListener("click" , borrar_elemento5 );
 
-function borrar_elemento(e){
+
+function borrar_elemento5(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
 
     let nodo_hijo = e.target;
@@ -190,6 +192,8 @@ function borrar_elemento(e){
     console.log(nodo_padre);
 
     nodo_padre.remove(); 
+
+    opinionObtenida5 = [];
 
     localStorage.removeItem("opinionGuardada5")
 
