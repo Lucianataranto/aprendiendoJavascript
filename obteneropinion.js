@@ -5,20 +5,25 @@ let opinionObtenida = JSON.parse(localStorage.getItem ("opinionGuardada")) || []
 
 let lista = document.getElementById("lista")
 
-let li = document.createElement("li")
-
 opinionObtenida.forEach(element => {
 
-    li.innerHTML = `<span>${element.opinionObtenida}</span>
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar">BORRAR</button>`
     lista.append( li );
 
+    eventoBoton ()
+
 });
 
+function eventoBoton () {
 
 let boton_borrar = document.querySelector(".btn_borrar");
 
 boton_borrar.addEventListener("click" , borrar_elemento) 
+
+}
 
     function borrar_elemento (e) {
 
@@ -45,15 +50,32 @@ let opinionObtenida1 = JSON.parse(localStorage.getItem ("opinionGuardada1")) || 
 
 let lista1 = document.getElementById("lista-1")
 
-let li1 = document.createElement("li")
+// let li1 = document.createElement("li")
     
-    li1.innerHTML = `<span>${opinionObtenida1}</span>
+//     li1.innerHTML = `<span>${opinionObtenida1}</span>
+//     <button class="btn_borrar1">BORRAR</button>`
+//     lista1.append( li1 );
+
+opinionObtenida1.forEach(element => {
+
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar1">BORRAR</button>`
-    lista1.append( li1 );
+    lista1.append( li );
+
+    eventoBoton1 ()
+
+});
+
+
+function eventoBoton1 () {
 
 let boton_borrar1 = document.querySelector(".btn_borrar1");
 
 boton_borrar1.addEventListener("click" , borrar_elemento1 );
+
+}
 
 function borrar_elemento1(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
@@ -78,15 +100,26 @@ let opinionObtenida2 = JSON.parse(localStorage.getItem ("opinionGuardada2")) || 
 
 let lista2 = document.getElementById("lista-2")
 
-let li2 = document.createElement("li")
-    
-    li2.innerHTML = `<span>${opinionObtenida2}</span>
+opinionObtenida2.forEach(element => {
+
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar2">BORRAR</button>`
-    lista2.append( li2 );
+    lista2.append( li );
+
+    ventoBoton2 ()
+
+});
+
+
+function eventoBoton2 () {
 
 let boton_borrar2 = document.querySelector(".btn_borrar2");
 
 boton_borrar2.addEventListener("click" , borrar_elemento2 );
+
+}
 
 
 function borrar_elemento2(e){
@@ -112,16 +145,26 @@ let opinionObtenida3 = JSON.parse(localStorage.getItem ("opinionGuardada3")) || 
 
 let lista3 = document.getElementById("lista-3")
 
-let li3 = document.createElement("li")
-    
-    li3.innerHTML = `<span>${opinionObtenida3}</span>
+opinionObtenida3.forEach(element => {
+
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar3">BORRAR</button>`
-    lista3.append( li3 );
+    lista3.append( li );
+
+    eventoBoton3 ()
+
+});
+
+
+function eventoBoton3 () {
 
 let boton_borrar3 = document.querySelector(".btn_borrar3");
+    
+    boton_borrar3.addEventListener("click" , borrar_elemento3 );
 
-boton_borrar3.addEventListener("click" , borrar_elemento3 );
-
+}
 
 function borrar_elemento3(e){
     console.log("BORRAR ESTE ELEMENTO: " , e.target);
@@ -145,15 +188,27 @@ let opinionObtenida4 = JSON.parse(localStorage.getItem ("opinionGuardada4")) || 
 
 let lista4 = document.getElementById("lista-4")
 
-let li4 = document.createElement("li")
-    
-    li4.innerHTML = `<span>${opinionObtenida4}</span>
+opinionObtenida4.forEach(element => {
+
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar4">BORRAR</button>`
-    lista4.append( li4 );
+    lista4.append( li );
+
+    eventoBoton4 ()
+
+});
+
+
+function eventoBoton4 () {
 
 let boton_borrar4 = document.querySelector(".btn_borrar4");
 
+
 boton_borrar4.addEventListener("click" , borrar_elemento4 );
+
+}
 
 
 function borrar_elemento4(e){
@@ -178,15 +233,25 @@ let opinionObtenida5 = JSON.parse(localStorage.getItem ("opinionGuardada5")) || 
 
 let lista5 = document.getElementById("lista-5")
 
-let li5 = document.createElement("li")
-    
-    li5.innerHTML = `<span>${opinionObtenida5}</span>
+opinionObtenida5.forEach(element => {
+
+    let li = document.createElement("li")
+
+    li.innerHTML = `<span>${element}</span>
     <button class="btn_borrar5">BORRAR</button>`
-    lista5.append( li5 );
+    lista5.append( li );
+
+    eventoBoton5 ()
+
+});
+
+function eventoBoton5 () {
 
 let boton_borrar5 = document.querySelector(".btn_borrar5");
 
-boton_borrar5.addEventListener("click" , borrar_elemento5 );
+    boton_borrar5.addEventListener("click" , borrar_elemento5 );
+
+}
 
 
 function borrar_elemento5(e){

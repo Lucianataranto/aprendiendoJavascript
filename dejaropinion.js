@@ -35,7 +35,7 @@ opiniones1.addEventListener("submit", (e) => {
 
     console.log (arrayOpiniones1)
 
-    localStorage.setItem ("opinionGuardada1", JSON.stringify(opinion_input1))
+    localStorage.setItem ("opinionGuardada1", JSON.stringify(arrayOpiniones1))
 
 })
 
@@ -56,7 +56,7 @@ opiniones2.addEventListener("submit", (e) => {
 
     console.log (arrayOpiniones2)
 
-    localStorage.setItem ("opinionGuardada2", JSON.stringify(opinion_input2))
+    localStorage.setItem ("opinionGuardada2", JSON.stringify(arrayOpiniones2))
  
 })
 
@@ -77,7 +77,7 @@ opiniones3.addEventListener("submit", (e) => {
 
     console.log (arrayOpiniones3)
 
-    localStorage.setItem ("opinionGuardada3", JSON.stringify(opinion_input3))
+    localStorage.setItem ("opinionGuardada3", JSON.stringify(arrayOpiniones3))
 
 })
 
@@ -97,7 +97,7 @@ opiniones4.addEventListener("submit", (e) => {
 
     console.log (arrayOpiniones4)
 
-    localStorage.setItem ("opinionGuardada4", JSON.stringify(opinion_input4))
+    localStorage.setItem ("opinionGuardada4", JSON.stringify(arrayOpiniones4))
 
 })
 
@@ -118,7 +118,7 @@ opiniones5.addEventListener("submit", (e) => {
 
     console.log (arrayOpiniones5)
 
-    localStorage.setItem ("opinionGuardada5", JSON.stringify(opinion_input5))
+    localStorage.setItem ("opinionGuardada5", JSON.stringify(arrayOpiniones5))
 
 })
 
