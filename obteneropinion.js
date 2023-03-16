@@ -6,31 +6,37 @@ let opinionObtenida = JSON.parse(localStorage.getItem ("opinionGuardada")) || []
 let lista = document.getElementById("lista")
 
 let li = document.createElement("li")
-    
-    li.innerHTML = `<span>${opinionObtenida}</span>
+
+opinionObtenida.forEach(element => {
+
+    li.innerHTML = `<span>${element.opinionObtenida}</span>
     <button class="btn_borrar">BORRAR</button>`
     lista.append( li );
 
+});
+
+
 let boton_borrar = document.querySelector(".btn_borrar");
 
-    boton_borrar.addEventListener("click" , borrar_elemento) 
-    
-        function borrar_elemento (e) {
-    
-        console.log("BORRAR ESTE ELEMENTO: " , e.target);
+boton_borrar.addEventListener("click" , borrar_elemento) 
 
-        let nodo_hijo = e.target;
-        let nodo_padre = nodo_hijo.parentNode;
+    function borrar_elemento (e) {
+
+    console.log("BORRAR ESTE ELEMENTO: " , e.target);
+
+    let nodo_hijo = e.target;
+    let nodo_padre = nodo_hijo.parentNode;
+
+    console.log(nodo_padre);
+
+    nodo_padre.remove();
+
+    opinionObtenida = [];
+
+    localStorage.removeItem("opinionGuardada")
     
-        console.log(nodo_padre);
-    
-        nodo_padre.remove();
-
-        opinionObtenida = [];
-
-        localStorage.removeItem("opinionGuardada")
-
     }
+
 
 // OPINION OBTENIDA FORM 2
 
