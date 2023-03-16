@@ -19,9 +19,9 @@ opinionObtenida.forEach(element => {
 
 function eventoBoton () {
 
-let boton_borrar = document.querySelector(".btn_borrar");
+let boton_borrar = document.querySelectorAll(".btn_borrar");
 
-boton_borrar.addEventListener("click" , borrar_elemento) 
+boton_borrar.forEach(btn => btn.addEventListener ("click", borrar_elemento))
 
 }
 
@@ -50,12 +50,6 @@ let opinionObtenida1 = JSON.parse(localStorage.getItem ("opinionGuardada1")) || 
 
 let lista1 = document.getElementById("lista-1")
 
-// let li1 = document.createElement("li")
-    
-//     li1.innerHTML = `<span>${opinionObtenida1}</span>
-//     <button class="btn_borrar1">BORRAR</button>`
-//     lista1.append( li1 );
-
 opinionObtenida1.forEach(element => {
 
     let li = document.createElement("li")
@@ -71,9 +65,10 @@ opinionObtenida1.forEach(element => {
 
 function eventoBoton1 () {
 
-let boton_borrar1 = document.querySelector(".btn_borrar1");
+let boton_borrar1 = document.querySelectorAll(".btn_borrar1");
 
-boton_borrar1.addEventListener("click" , borrar_elemento1 );
+boton_borrar1.forEach(btn => btn.addEventListener ("click", borrar_elemento1))
+
 
 }
 
@@ -108,16 +103,17 @@ opinionObtenida2.forEach(element => {
     <button class="btn_borrar2">BORRAR</button>`
     lista2.append( li );
 
-    ventoBoton2 ()
+    eventoBoton2 ()
 
 });
 
 
 function eventoBoton2 () {
 
-let boton_borrar2 = document.querySelector(".btn_borrar2");
+let boton_borrar2 = document.querySelectorAll(".btn_borrar2");
 
-boton_borrar2.addEventListener("click" , borrar_elemento2 );
+boton_borrar2.forEach(btn => btn.addEventListener ("click", borrar_elemento2))
+
 
 }
 
@@ -160,9 +156,10 @@ opinionObtenida3.forEach(element => {
 
 function eventoBoton3 () {
 
-let boton_borrar3 = document.querySelector(".btn_borrar3");
+let boton_borrar3 = document.querySelectorAll(".btn_borrar3");
     
-    boton_borrar3.addEventListener("click" , borrar_elemento3 );
+boton_borrar3.forEach(btn => btn.addEventListener ("click", borrar_elemento3))
+
 
 }
 
@@ -203,10 +200,9 @@ opinionObtenida4.forEach(element => {
 
 function eventoBoton4 () {
 
-let boton_borrar4 = document.querySelector(".btn_borrar4");
+let boton_borrar4 = document.querySelectorAll(".btn_borrar4");
 
-
-boton_borrar4.addEventListener("click" , borrar_elemento4 );
+boton_borrar4.forEach(btn => btn.addEventListener ("click", borrar_elemento4))
 
 }
 
@@ -247,9 +243,10 @@ opinionObtenida5.forEach(element => {
 
 function eventoBoton5 () {
 
-let boton_borrar5 = document.querySelector(".btn_borrar5");
+let boton_borrar5 = document.querySelectorAll(".btn_borrar5");
 
-    boton_borrar5.addEventListener("click" , borrar_elemento5 );
+boton_borrar5.forEach(btn => btn.addEventListener ("click", borrar_elemento5))
+
 
 }
 
