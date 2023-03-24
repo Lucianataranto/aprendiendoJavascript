@@ -153,6 +153,7 @@ function renderizarProductos() {
     });
 }
 
+
 let botonVaciar = document.getElementById("boton-vaciar")
 
 botonVaciar.addEventListener("click" , vaciarCarrito)
@@ -164,4 +165,44 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
         localStorage.removeItem("carrito")
 
         renderizarProductos ()
+    }
+
+
+    // Swal.fire({
+    //     title: "Luli capa",
+    //     text: "kpapkapkapakpoeejf",
+    //     icon: "warning",
+    //     imageUrl: "https://static.wikia.nocookie.net/gatopedia/images/2/2e/El_gatoo.png/revision/latest?cb=20230103150310&path-prefix=esg",
+    //     footer: "",
+    //     color: "dark",
+    //     background: "pink",
+    //     showClass: {
+    //         popup: "animate__animated animate__bounceInDown"
+    //     },
+    //     hideClass: {
+    //         popup: "animate__animated animate__bounceOutDown"
+    //     }
+    // }
+    // )
+
+    let boton_comprarToastify = document.querySelectorAll(".botoncomprar1")
+
+    boton_comprarToastify.addEventListener("click", cartelToastify)
+    
+    
+    function cartelToastify () {
+    
+        Toastify({
+            text: "¡Agregado al carrito!",
+            duration: 1000,
+            gravity: "bottom",
+            position: "left",
+            style: {
+                fontSize: "30px",
+                color: "red",
+                fontFamily: "",
+                background: "pink",
+            }
+        }).showToas();
+    
     }
