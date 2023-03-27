@@ -162,7 +162,7 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
 
         carritoDeCompras = [];
 
-        localStorage.removeItem("carrito")
+        // localStorage.removeItem("carrito")
 
         renderizarProductos ()
     }
@@ -187,9 +187,12 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
 
     let boton_comprarToastify = document.querySelectorAll(".botoncomprar1")
 
-    boton_comprarToastify.addEventListener("click", cartelToastify)
+    for (let boton1 of boton_comprarToastify) {
+
+    boton1.addEventListener("click", cartelToastify)
     
-    
+    }
+
     function cartelToastify () {
     
         Toastify({
@@ -203,6 +206,45 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
                 fontFamily: "",
                 background: "pink",
             }
-        }).showToas();
+        }).showToast();
     
     }
+
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&appid=bbf8893c6e8030e157bb633d11a66e17")
+    .then( response=> response.json())
+    .then( data=>console.log(data))
+
+    function mostrar_posicion( posicion ){
+
+        let lat = posicion.coords.latitude;
+        let long = posicion.coords.longitude;
+        let key = "bbf8893c6e8030e157bb633d11a66e17";
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric&lang=es`)
+        .then( response=> response.json())
+        .then( data=>{
+                                    let textoClima = 
+                                    document.innerHTML = `<p>${data.name}</p>
+                                    <p>${data.main.temp}</p>
+                                    <p>${data.weather[0].description}</p>`
+                                    sweetAlert (textoClima)
+    })}
+
+    function sweetAlert (textoClima) {
+        Swal.fire({
+            title: "Clima y literatura",
+            text: "Vas a tener un clima de lectura de " + textoClima,
+            icon: "warning",
+            imageUrl: "https://static.wikia.nocookie.net/gatopedia/images/2/2e/El_gatoo.png/revision/latest?cb=20230103150310&path-prefix=esg",
+            footer: "",
+            color: "dark",
+            background: "pink",
+            showClass: {
+                popup: "animate__animated animate__bounceInDown"
+            },
+            hideClass: {
+                popup: "animate__animated animate__bounceOutDown"
+            }
+        }
+        )
+        }
