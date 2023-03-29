@@ -168,23 +168,6 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
     }
 
 
-    // Swal.fire({
-    //     title: "Luli capa",
-    //     text: "kpapkapkapakpoeejf",
-    //     icon: "warning",
-    //     imageUrl: "https://static.wikia.nocookie.net/gatopedia/images/2/2e/El_gatoo.png/revision/latest?cb=20230103150310&path-prefix=esg",
-    //     footer: "",
-    //     color: "dark",
-    //     background: "pink",
-    //     showClass: {
-    //         popup: "animate__animated animate__bounceInDown"
-    //     },
-    //     hideClass: {
-    //         popup: "animate__animated animate__bounceOutDown"
-    //     }
-    // }
-    // )
-
     let boton_comprarToastify = document.querySelectorAll(".botoncomprar1")
 
     for (let boton1 of boton_comprarToastify) {
@@ -224,11 +207,16 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
         .then( response=> response.json())
         .then( data=>{
                                     let textoClima = 
-                                    document.innerHTML = `<p>${data.name}</p>
+                                    document.innerHTML = `<div> <p>${data.name}</p>
                                     <p>${data.main.temp}</p>
-                                    <p>${data.weather[0].description}</p>`
+                                    <p>${data.weather[0].description}</p> </div>`
                                     sweetAlert (textoClima)
+
     })}
+
+
+    navigator.geolocation.getCurrentPosition( mostrar_posicion );
+
 
     function sweetAlert (textoClima) {
         Swal.fire({
