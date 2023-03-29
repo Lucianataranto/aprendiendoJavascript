@@ -193,78 +193,26 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
     
     }
 
+
     fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&appid=bbf8893c6e8030e157bb633d11a66e17")
-    .then( response=> response.json())
-    .then((data) => {
-        sweetAlert(data);
-      });
+	.then((response) => response.json())
+	.then((data) => {
+		mostrarAlerta(data);
+	});
 
-    // function mostrar_posicion( posicion ){
-
-    //     let lat = posicion.coords.latitude;
-    //     let long = posicion.coords.longitude;
-    //     let key = "bbf8893c6e8030e157bb633d11a66e17";
-
-    // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=metric&lang=es`)
-    //     .then( response=> response.json())
-    //     .then( data=>{
-    //                                 // let textoClima = 
-    //                                 // document.innerHTML = `<div> <p>${data.name}</p>
-    //                                 // <p>${data.main.temp}</p>
-    //                                 // <p>${data.weather[0].description}</p> </div>`
-    //                                 // sweetAlert (textoClima)
-    //                                 const contenedor = document.querySelector('#clima-contenedor');
-    //                                 const div = document.createElement('div')
-    //                                 div.innerHTML = `<div> <p>${data.name}</p>
-    //                                 <p>${data.main.temp}</p>
-    //                                 <p>${data.weather[0].description}</p> </div>`
-    //                                 contenedor.appendChild(div)
-    //                                 sweetAlert(textoClima)
-
-
-
-    // })}
-
-
-    navigator.geolocation.getCurrentPosition( sweetAlert );
-
-
-    function sweetAlert(data) {
-        let temp = data.main.temp;
-        Swal.fire({
-          title: "Clima y literatura",
-          text: `Vas a tener un clima de lectura de ${data.name} ${data.main.temp} ${data.weather[0].description}`,
-          icon: "warning",
-          imageUrl:
-            "https://static.wikia.nocookie.net/gatopedia/images/2/2e/El_gatoo.png/revision/latest?cb=20230103150310&path-prefix=esg",
-          footer: "",
-          color: "dark",
-          background: "pink",
-          showClass: {
+function mostrarAlerta(data) {
+    Swal.fire({
+        title: "Clima y literatura",
+		text: `Vas a tener un clima de lectura de ${data.main.temp} ${data.weather[0].description} en ${data.name}`,
+		icon: "warning",
+		footer: "",
+		color: "dark",
+		background: "pink",
+		showClass: {
             popup: "animate_animated animate_bounceInDown",
-          },
-          hideClass: {
-            popup: "animate_animated animate_bounceOutDown",
-          },
-        });
-      }
-
-    // function sweetAlert (textoClima) {
-    //     Swal.fire({
-    //         title: "Clima y literatura",
-    //         text: "Vas a tener un clima de lectura de " + textoClima,
-    //         html: '<div id="clima-contenedor"> </div>',
-    //         icon: "warning",
-    //         imageUrl: "https://static.wikia.nocookie.net/gatopedia/images/2/2e/El_gatoo.png/revision/latest?cb=20230103150310&path-prefix=esg",
-    //         footer: "",
-    //         color: "dark",
-    //         background: "pink",
-    //         showClass: {
-    //             popup: "animate__animated animate__bounceInDown"
-    //         },
-    //         hideClass: {
-    //             popup: "animate__animated animate__bounceOutDown"
-    //         }
-    //     }
-    //     )
-    //     }
+		},
+		hideClass: {
+			popup: "animate_animated animate_bounceOutDown",
+		},
+	});
+}
