@@ -113,14 +113,13 @@ function comprar (e) {
 
 }
 
-const DOMitems = document.querySelector('#items');
-const DOMcarrito = document.querySelector('#carrito');
-const DOMtotal = document.querySelector('#total');
-const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+const Dom_items = document.querySelector('#items');
+const Dom_carrito = document.querySelector('#carrito');
+const Dom_botonVaciar = document.querySelector('#boton-vaciar');
 
 function renderizarProductos() {
         
-        DOMitems.innerHTML = "";
+        Dom_items.innerHTML = "";
 
         // let carritoAlmacenado = JSON.parse(localStorage.getItem ("carrito")) || []
         // console.log (carritoAlmacenado)
@@ -149,7 +148,7 @@ function renderizarProductos() {
         miNodoCardBody.appendChild(miNodoTitle);
         miNodoCardBody.appendChild(miNodoPrecio);
         miNodo.appendChild(miNodoCardBody);
-        DOMitems.appendChild(miNodo);
+        Dom_items.appendChild(miNodo);
     });
 }
 
@@ -162,7 +161,7 @@ botonVaciar.addEventListener("click" , vaciarCarrito)
 
         carritoDeCompras = [];
 
-        // localStorage.removeItem("carrito")
+        localStorage.removeItem("carrito")
 
         renderizarProductos ()
     }
